@@ -6,7 +6,6 @@ namespace Ship
     public class Hull : MonoBehaviour
     {
         [Header("Health")]
-        [SerializeField] private IntReference _healthRef;
         [SerializeField] private int startHealth = 10;
 
         [Header("Collision Bounce")]

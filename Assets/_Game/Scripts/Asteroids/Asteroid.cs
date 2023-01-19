@@ -66,9 +66,9 @@ namespace Asteroids
 
         private void AddForce()
         {
-            float force = Random.Range(_stats.MinForce, _stats.MaxForce);
             _rigidbody.velocity = Vector3.zero;
-            Debug.Log(_direction * force);
+
+            float force = Random.Range(_stats.MinForce, _stats.MaxForce);
             _rigidbody.AddForce(_direction * force, ForceMode2D.Impulse);
         }
 
