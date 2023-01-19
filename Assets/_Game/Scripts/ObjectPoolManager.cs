@@ -26,10 +26,10 @@ public static class ObjectPoolManager
         for (int i = 0; i < numberToAdd; i++)
         {
             gameObjectObjectToSpawn = Object.Instantiate(gameObject);
-            objectToSpawn.transform.parent = objectPool;
+            gameObjectObjectToSpawn.transform.parent = objectPool;
 
             gameObjectPoolDictionary[gameObject].Enqueue(gameObjectObjectToSpawn);
-            objectToSpawn.gameObject.SetActive(false);
+            gameObjectObjectToSpawn.gameObject.SetActive(false);
         }
     }
 
@@ -68,7 +68,7 @@ public static class ObjectPoolManager
         if (gameObjectPoolDictionary[gameObject].Count > 0 && !gameObjectPoolDictionary[gameObject].Peek().activeInHierarchy)
         {
             gameObjectObjectToSpawn = gameObjectPoolDictionary[gameObject].Dequeue();
-            objectToSpawn.transform.parent = objectPool;
+            gameObjectObjectToSpawn.transform.parent = objectPool;
 
             gameObjectObjectToSpawn.gameObject.SetActive(true);
             gameObjectObjectToSpawn.transform.SetPositionAndRotation(position, rotation);
@@ -80,7 +80,7 @@ public static class ObjectPoolManager
         else
         {
             gameObjectObjectToSpawn = Object.Instantiate(gameObject, position, rotation);
-            objectToSpawn.transform.parent = objectPool;
+            gameObjectObjectToSpawn.transform.parent = objectPool;
 
             gameObjectPoolDictionary[gameObject].Enqueue(gameObjectObjectToSpawn);
 
