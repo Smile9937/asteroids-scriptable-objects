@@ -1,11 +1,18 @@
 using System;
 using UnityEngine;
+using Variables;
 
 namespace Ship
 {
     public class Gun : MonoBehaviour
     {
         [SerializeField] private Laser _laserPrefab;
+        private Transform _transform;
+
+        private void Start()
+        {
+            _transform = transform;
+        }
 
         private void Update()
         {
@@ -15,8 +22,7 @@ namespace Ship
         
         private void Shoot()
         {
-            var trans = transform;
-            Instantiate(_laserPrefab, trans.position, trans.rotation);
+            ObjectPoolManager.SpawnFromPool(_laserPrefab, _transform.position, _transform.rotation);
         }
     }
 }

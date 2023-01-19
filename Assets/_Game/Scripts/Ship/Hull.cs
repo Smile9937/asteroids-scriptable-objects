@@ -1,4 +1,3 @@
-using DefaultNamespace.ScriptableEvents;
 using UnityEngine;
 using Variables;
 
@@ -6,20 +5,43 @@ namespace Ship
 {
     public class Hull : MonoBehaviour
     {
-        //[SerializeField] private IntVariable _health;
-        [SerializeField] private ScriptableEventIntReference _onHealthChangedEvent;
+        [Header("Health")]
         [SerializeField] private IntReference _healthRef;
-        [SerializeField] private IntObservable _healthObservable;
-        
+        [SerializeField] private int startHealth = 10;
+
+        [Header("Collision Bounce")]
+        [SerializeField] private float bounceForce;
+        [SerializeField] private LayerMask bounceMask;
+
+
+        private int health;
+
+        private Rigidbody2D rigidBody;
+
+        private void Start()
+        {
+            rigidBody = GetComponent<Rigidbody2D>();
+            health = startHealth;
+        }
+
         private void OnCollisionEnter2D(Collision2D other)
         {
             if (string.Equals(other.gameObject.tag, "Asteroid"))
             {
-                Debug.Log("Hull collided with Asteroid");
-                // TODO can we bake this into one call?
-                //_healthRef.ApplyChange(-1);
-                //_onHealthChangedEvent.Raise(_healthRef);
-                _healthObservable.ApplyChange(-1);
+                health--;
+
+                if(health <= 0)
+                {
+                    health = 0;
+                    Debug.Log("Ship Destroyed!");
+                }
+
+                EventManager.InvokeUpdateHealthUI(health);
+            }
+
+            if (bounceMask == (bounceMask | 1 << other.gameObject.layer))
+            {
+                rigidBody.AddForce(other.GetContact(0).normal * bounceForce);
             }
         }
     }

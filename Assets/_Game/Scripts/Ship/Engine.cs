@@ -7,6 +7,8 @@ namespace Ship
     [RequireComponent(typeof(Rigidbody2D))]
     public class Engine : MonoBehaviour
     {
+        [SerializeField] private ParticleSystem _particleSystem;
+
         [SerializeField] private FloatVariable _throttlePower;
         [SerializeField] private FloatVariable _rotationPower;
         
@@ -14,7 +16,20 @@ namespace Ship
         [SerializeField] private float _rotationPowerSimple;
 
         private Rigidbody2D _rigidbody;
-        
+
+        private void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.UpArrow))
+            {
+                _particleSystem.Play();
+            }
+            
+            if (Input.GetKeyUp(KeyCode.UpArrow))
+            {
+                _particleSystem.Stop();
+            }            
+        }
+
         private void FixedUpdate()
         {
             if (Input.GetKey(KeyCode.UpArrow))

@@ -1,0 +1,10 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <Style src="project://database/Assets/text.uss?fileID=7433441132597879392&amp;guid=9841b5792d00d5446838e6842deaeada&amp;type=3#text" />
+    <ui:VisualElement name="root" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0);">
+        <ui:VisualElement name="text-fields" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); align-items: stretch; justify-content: flex-start;">
+            <ui:Label tabindex="-1" text="Healt" display-tooltip-when-elided="true" style="top: auto; position: relative;" />
+            <ui:Label tabindex="-1" text="Time" display-tooltip-when-elided="true" style="position: relative; top: auto;" />
+            <ui:Label tabindex="-1" text="Score" display-tooltip-when-elided="true" style="align-self: flex-start; position: relative; top: auto;" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

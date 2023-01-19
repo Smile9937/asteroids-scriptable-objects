@@ -1,0 +1,61 @@
+.section {
+    background-color: var(--unity-colors-default-background);
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    margin-left: 2px;
+    margin-right: 2px;
+    margin-top: 2px;
+    margin-bottom: 2px;
+    align-self: stretch;
+    justify-content: space-around;
+}
+
+.sectionGroupBox {
+    justify-content: flex-end;
+    align-items: stretch;
+    align-self: stretch;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    margin-left: 0;
+    margin-bottom: 0;
+    position: relative;
+    height: 39px;
+}
+
+.text {
+    -unity-text-align: middle-center;
+    font-size: 12px;
+    -unity-font-style: normal;
+    margin-right: 1px;
+    margin-left: 10px;
+}
+
+.minTextColor {
+    color: rgb(119, 167, 255);
+}
+
+.maxTextColor {
+    color: rgb(255, 136, 136);
+}
+
+.fieldStyle {
+    margin-left: 3px;
+    margin-right: 3px;
+    margin-top: 1px;
+    margin-bottom: 1px;
+    flex-grow: 1;
+    flex-shrink: 0;
+}
+
+.sliderStyle {
+    flex-grow: 1;
+    flex-shrink: 0;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.headerTextStyle {
+    -unity-font-style: bold;
+}

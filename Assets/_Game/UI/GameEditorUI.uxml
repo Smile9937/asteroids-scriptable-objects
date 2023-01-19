@@ -1,0 +1,43 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="True">
+    <Style src="project://database/Assets/_Game/UI/GameEditorUI.uss?fileID=7433441132597879392&amp;guid=c2bba2618b3e97d4ba5fac176c071f69&amp;type=3#GameEditorUI" />
+    <ui:VisualElement style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); flex-direction: column;">
+        <ui:VisualElement class="section" style="flex-grow: 0; position: relative;">
+            <ui:GroupBox name="ForceGroupBox" class="sectionGroupBox" style="height: 52px;">
+                <ui:VisualElement name="ForceSliderElement" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); justify-content: space-around; flex-direction: row; flex-shrink: 0;">
+                    <ui:Label tabindex="-1" text="Force" display-tooltip-when-elided="true" name="ForceLabel" class="text headerTextStyle" style="-unity-text-align: middle-center;" />
+                    <ui:MinMaxSlider low-limit="0" high-limit="1000" binding-path="_force" name="ForceMinMaxSlider" class="sliderStyle" style="overflow: hidden;" />
+                </ui:VisualElement>
+                <ui:VisualElement name="ForceFieldElement" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); justify-content: space-around; flex-direction: row; flex-shrink: 0;">
+                    <ui:Label tabindex="-1" text="Min:" display-tooltip-when-elided="true" name="MinLabel" class="text minTextColor" style="-unity-text-align: middle-center;" />
+                    <ui:FloatField value="42.2" binding-path="_force.x" name="MinField" class="fieldStyle" style="flex-grow: 1; flex-direction: column;" />
+                    <ui:Label tabindex="-1" text="Max:" display-tooltip-when-elided="true" name="MaxLabel" class="text maxTextColor" />
+                    <ui:FloatField value="42.2" binding-path="_force.y" name="MaxField" class="fieldStyle" style="flex-grow: 1;" />
+                </ui:VisualElement>
+            </ui:GroupBox>
+            <ui:GroupBox name="SizeGroupBox" class="sectionGroupBox">
+                <ui:VisualElement name="SizeSliderElement" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); justify-content: space-around; flex-direction: row; flex-shrink: 0;">
+                    <ui:Label tabindex="-1" text="Size" display-tooltip-when-elided="true" name="SizeLabel" class="text headerTextStyle" style="-unity-text-align: middle-center;" />
+                    <ui:MinMaxSlider low-limit="0" high-limit="1" binding-path="_size" name="SizeMinMaxSlider" class="sliderStyle" />
+                </ui:VisualElement>
+                <ui:VisualElement name="SizeFieldElement" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); justify-content: flex-start; flex-direction: row; flex-shrink: 0;">
+                    <ui:Label tabindex="-1" text="Min:" display-tooltip-when-elided="true" name="MinLabel" class="text minTextColor" style="-unity-text-align: middle-center;" />
+                    <ui:FloatField value="42.2" binding-path="_size.x" name="MinField" class="fieldStyle" />
+                    <ui:Label tabindex="-1" text="Max:" display-tooltip-when-elided="true" name="MaxLabel" class="text maxTextColor" />
+                    <ui:FloatField value="42.2" binding-path="_size.y" name="MaxField" class="fieldStyle" />
+                </ui:VisualElement>
+            </ui:GroupBox>
+            <ui:GroupBox name="TorqueGroupBox" class="sectionGroupBox">
+                <ui:VisualElement name="TorqueSliderElement" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); justify-content: space-around; flex-direction: row; flex-shrink: 0;">
+                    <ui:Label tabindex="-1" text="Torque" display-tooltip-when-elided="true" name="TorqueLabel" class="text headerTextStyle" style="-unity-text-align: middle-center;" />
+                    <ui:MinMaxSlider low-limit="0" high-limit="1" binding-path="_torque" name="TorqueMinMaxSlider" class="sliderStyle" />
+                </ui:VisualElement>
+                <ui:VisualElement name="TorqueFieldElement" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); justify-content: flex-start; flex-direction: row; flex-shrink: 0;">
+                    <ui:Label tabindex="-1" text="Min:" display-tooltip-when-elided="true" name="MinLabel" class="text minTextColor" style="-unity-text-align: middle-center;" />
+                    <ui:FloatField value="42.2" binding-path="_torque.x" name="MinField" class="fieldStyle" />
+                    <ui:Label tabindex="-1" text="Max:" display-tooltip-when-elided="true" name="MaxLabel" class="text maxTextColor" />
+                    <ui:FloatField value="42.2" binding-path="_torque.y" name="MaxField" class="fieldStyle" />
+                </ui:VisualElement>
+            </ui:GroupBox>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>
