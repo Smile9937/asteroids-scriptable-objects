@@ -46,14 +46,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 017c14a0b2ceaec4191b684dfd17404f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _minForce: 2
-  _maxForce: 6
-  _minSize: 0.2
-  _maxSize: 1
-  _minTorque: 0.1
-  _maxTorque: 0.5
   _shape: {fileID: 1524412162417054026}
   _stats: {fileID: 11400000, guid: 3a2a5a0c7cdf1a541a4544daa0d12d09, type: 2}
+  _destroyMask:
+    serializedVersion: 2
+    m_Bits: 1536
 --- !u!50 &1784223117350305362
 Rigidbody2D:
   serializedVersion: 4

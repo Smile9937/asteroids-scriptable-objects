@@ -12,6 +12,8 @@ namespace Asteroids
         [SerializeField] private Transform _shape;
         [SerializeField] private AsteroidScriptableObject _stats;
 
+        [SerializeField] private LayerMask _destroyMask;
+
         private Rigidbody2D _rigidbody;
         private Vector3 _direction;
 
@@ -32,8 +34,13 @@ namespace Asteroids
 
         private void OnTriggerEnter2D(Collider2D other)
         {
-            if (other.CompareTag("Laser"))
-               HitByLaser();
+            if (_destroyMask == (_destroyMask | 1 << other.gameObject.layer))
+            {
+                if(other.gameObject.CompareTag("Laser"))
+                    HitByLaser();
+
+                gameObject.SetActive(false);
+            }
         }
 
         private void HitByLaser()
@@ -48,8 +55,6 @@ namespace Asteroids
                     asteroid.Initialize();
                 }
             }
-
-            gameObject.SetActive(false);
         }
         
         private void SetDirection()

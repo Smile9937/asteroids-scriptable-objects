@@ -51,7 +51,7 @@ MonoBehaviour:
   _hitEffect: {fileID: 6934445082386245142, guid: 62043cca2df8c594e91aa63c0bf2bc9b, type: 3}
   _hitMask:
     serializedVersion: 2
-    m_Bits: 320
+    m_Bits: 1280
   _effectMask:
     serializedVersion: 2
     m_Bits: 256
