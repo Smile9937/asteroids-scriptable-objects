@@ -1,5 +1,5 @@
-using DefaultNamespace.ScriptableEvents;
 using UnityEngine;
+using UnityEngine.UIElements;
 using Variables;
 using Random = UnityEngine.Random;
 
@@ -7,70 +7,55 @@ namespace Asteroids
 {
     [RequireComponent(typeof(Rigidbody2D))]
     public class Asteroid : MonoBehaviour
-    {
-        [SerializeField] private ScriptableEventInt _onAsteroidDestroyed;
-        
-        [Header("Config:")]
-        [SerializeField] private float _minForce;
-        [SerializeField] private float _maxForce;
-        [SerializeField] private float _minSize;
-        [SerializeField] private float _maxSize;
-        [SerializeField] private float _minTorque;
-        [SerializeField] private float _maxTorque;
-
+    {        
         [Header("References:")]
         [SerializeField] private Transform _shape;
+        [SerializeField] private AsteroidScriptableObject _stats;
 
         private Rigidbody2D _rigidbody;
         private Vector3 _direction;
-        private int _instanceId;
 
-        private void Start()
+        public void ChangeStats(AsteroidScriptableObject stats) => _stats = stats;
+        public void Initialize()
         {
-            _rigidbody = GetComponent<Rigidbody2D>();
-            _instanceId = GetInstanceID();
-            
             SetDirection();
             AddForce();
             AddTorque();
             SetSize();
         }
-        
+
+        private void Awake()
+        {
+            _rigidbody = GetComponent<Rigidbody2D>();
+            Initialize();
+        }
+
         private void OnTriggerEnter2D(Collider2D other)
         {
-            if (string.Equals(other.tag, "Laser"))
-            {
+            if (other.CompareTag("Laser"))
                HitByLaser();
-            }
         }
 
         private void HitByLaser()
         {
-            _onAsteroidDestroyed.Raise(_instanceId);
-            Destroy(gameObject);
-        }
+            if(_stats.ShoudSplit)
+            {
+                for(int i = 0; i < _stats.SplitCount; i++)
+                {
+                    Asteroid asteroid = ObjectPoolManager.SpawnFromPool(this, transform.transform.position, Quaternion.identity);
 
-        // TODO Can we move this to a single listener, something like an AsteroidDestroyer?
-        public void OnHitByLaser(IntReference asteroidId)
-        {
-            if (_instanceId == asteroidId.GetValue())
-            {
-                Destroy(gameObject);
+                    asteroid.ChangeStats(_stats.SplitStats);
+                    asteroid.Initialize();
+                }
             }
-        }
-        
-        public void OnHitByLaserInt(int asteroidId)
-        {
-            if (_instanceId == asteroidId)
-            {
-                Destroy(gameObject);
-            }
+
+            gameObject.SetActive(false);
         }
         
         private void SetDirection()
         {
-            var size = new Vector2(3f, 3f);
-            var target = new Vector3
+            Vector2 size = new Vector2(3f, 3f);
+            Vector3 target = new Vector3
             (
                 Random.Range(-size.x, size.x),
                 Random.Range(-size.y, size.y)
@@ -81,24 +66,25 @@ namespace Asteroids
 
         private void AddForce()
         {
-            var force = Random.Range(_minForce, _maxForce);
-            _rigidbody.AddForce( _direction * force, ForceMode2D.Impulse);
+            float force = Random.Range(_stats.MinForce, _stats.MaxForce);
+            _rigidbody.velocity = Vector3.zero;
+            Debug.Log(_direction * force);
+            _rigidbody.AddForce(_direction * force, ForceMode2D.Impulse);
         }
 
         private void AddTorque()
         {
-            var torque = Random.Range(_minTorque, _maxTorque);
-            var roll = Random.Range(0, 2);
+            float torque = Random.Range(_stats.MinTorque, _stats.MaxTorque);
+            int roll = Random.Range(0, 2);
 
-            if (roll == 0)
-                torque = -torque;
-            
+            torque = roll == 0 ? -torque : torque;
+
             _rigidbody.AddTorque(torque, ForceMode2D.Impulse);
         }
 
         private void SetSize()
         {
-            var size = Random.Range(_minSize, _maxSize);
+            float size = Random.Range(_stats.MinSize, _stats.MaxSize);
             _shape.localScale = new Vector3(size, size, 0f);
         }
     }

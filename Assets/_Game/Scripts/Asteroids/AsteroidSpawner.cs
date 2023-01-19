@@ -66,7 +66,7 @@ namespace Asteroids
             {
                 var location = GetSpawnLocation();
                 var position = GetStartPosition(location);
-                Instantiate(_asteroidPrefab, position, Quaternion.identity);
+                ObjectPoolManager.SpawnFromPool(_asteroidPrefab, position, Quaternion.identity);
             }
         }
 
