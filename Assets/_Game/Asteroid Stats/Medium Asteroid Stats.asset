@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _force: {x: 200, y: 400}
   _size: {x: 0.25, y: 0.5}
-  _torque: {x: 0.25, y: 0.5}
+  _torque: {x: 100, y: 300}
   _shouldSplit: 1
   _splitCount: 2
   _splitStats: {fileID: 11400000, guid: 23182969e45296645a10c82d4fb94b84, type: 2}

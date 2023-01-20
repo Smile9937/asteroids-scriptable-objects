@@ -29,7 +29,7 @@
             <ui:GroupBox name="TorqueGroupBox" class="sectionGroupBox">
                 <ui:VisualElement name="TorqueSliderElement" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); justify-content: space-around; flex-direction: row; flex-shrink: 0;">
                     <ui:Label tabindex="-1" text="Torque" display-tooltip-when-elided="true" name="TorqueLabel" class="text headerTextStyle" style="-unity-text-align: middle-center;" />
-                    <ui:MinMaxSlider low-limit="0" high-limit="1" binding-path="_torque" name="TorqueMinMaxSlider" class="sliderStyle" />
+                    <ui:MinMaxSlider low-limit="0" high-limit="1000" binding-path="_torque" name="TorqueMinMaxSlider" class="sliderStyle" />
                 </ui:VisualElement>
                 <ui:VisualElement name="TorqueFieldElement" class="section" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); justify-content: flex-start; flex-direction: row; flex-shrink: 0;">
                     <ui:Label tabindex="-1" text="Min:" display-tooltip-when-elided="true" name="MinLabel" class="text minTextColor" style="-unity-text-align: middle-center;" />

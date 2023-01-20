@@ -1,7 +1,4 @@
 using UnityEngine;
-using UnityEngine.UIElements;
-using Variables;
-using Random = UnityEngine.Random;
 
 namespace Asteroids
 {
@@ -18,6 +15,7 @@ namespace Asteroids
         private Vector3 _direction;
 
         public void ChangeStats(AsteroidScriptableObject stats) => _stats = stats;
+
         public void Initialize()
         {
             SetDirection();
@@ -49,7 +47,7 @@ namespace Asteroids
             {
                 for(int i = 0; i < _stats.SplitCount; i++)
                 {
-                    Asteroid asteroid = ObjectPoolManager.SpawnFromPool(this, transform.transform.position, Quaternion.identity);
+                    Asteroid asteroid = ObjectPoolManager.SpawnFromPool(this, transform.position, Quaternion.identity);
 
                     asteroid.ChangeStats(_stats.SplitStats);
                     asteroid.Initialize();
@@ -74,16 +72,18 @@ namespace Asteroids
             _rigidbody.velocity = Vector3.zero;
 
             float force = Random.Range(_stats.MinForce, _stats.MaxForce);
+
             _rigidbody.AddForce(_direction * force, ForceMode2D.Impulse);
         }
 
         private void AddTorque()
         {
+            _rigidbody.angularVelocity = 0;
+
             float torque = Random.Range(_stats.MinTorque, _stats.MaxTorque);
             int roll = Random.Range(0, 2);
 
             torque = roll == 0 ? -torque : torque;
-
             _rigidbody.AddTorque(torque, ForceMode2D.Impulse);
         }
 
