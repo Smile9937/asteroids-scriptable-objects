@@ -1,15 +1,19 @@
 .section {
     background-color: var(--unity-colors-default-background);
-    padding-left: 0;
-    padding-right: 0;
-    padding-top: 0;
-    padding-bottom: 0;
     margin-left: 2px;
     margin-right: 2px;
     margin-top: 2px;
     margin-bottom: 2px;
     align-self: stretch;
     justify-content: space-around;
+    border-left-color: var(--unity-colors-default-background);
+    border-right-color: var(--unity-colors-default-background);
+    border-top-color: var(--unity-colors-default-background);
+    border-bottom-color: var(--unity-colors-default-background);
+    padding-left: 2px;
+    padding-right: 2px;
+    padding-top: 2px;
+    padding-bottom: 2px;
 }
 
 .sectionGroupBox {
@@ -40,7 +44,7 @@
     color: rgb(255, 136, 136);
 }
 
-.fieldStyle {
+.autoScaleFieldStyle {
     margin-left: 3px;
     margin-right: 3px;
     margin-top: 1px;
@@ -58,4 +62,22 @@
 
 .headerTextStyle {
     -unity-font-style: bold;
+}
+
+.categoryBackground {
+    border-left-color: var(--unity-colors-default-background);
+    border-right-color: var(--unity-colors-default-background);
+    border-top-color: var(--unity-colors-default-background);
+    border-bottom-color: var(--unity-colors-default-background);
+    border-left-width: 2px;
+    border-right-width: 2px;
+    border-top-width: 2px;
+    border-bottom-width: 2px;
+    background-color: rgba(255, 255, 255, 0.02);
+}
+
+.hide {
+    visibility: visible;
+    overflow: visible;
+    display: none;
 }

@@ -21,6 +21,14 @@ public class AsteroidUIEditor : Editor
         VisualElement root = new VisualElement();
         m_UXML.CloneTree(root);
 
+        ObjectField splitStatsField = root.Q<ObjectField>("SplitStatsField");
+        splitStatsField.objectType = typeof(AsteroidScriptableObject);
+
+        VisualElement splitToggleElement = root.Q<VisualElement>("SplitToggleElement");
+        Toggle shouldSplitToggle = root.Q<Toggle>("ShouldSplitToggle");
+
+        shouldSplitToggle.RegisterValueChangedCallback(value => splitToggleElement.ToggleInClassList("hide"));
+
         return root;
     }
 }

@@ -23,5 +23,4 @@ public class AsteroidScriptableObject : ScriptableObject
     public bool ShoudSplit => _shouldSplit;
     public int SplitCount => _splitCount;
     public AsteroidScriptableObject SplitStats => _splitStats;
-
 }
